@@ -1,22 +1,19 @@
 import Head from 'next/head'
-import { FC } from 'react';
-import Navbar from '../ui/Navbar';
-import { SideMenu } from '../ui';
-
-
-
+import { ReactNode } from 'react';
+import { SideMenu, Navbar } from '../ui';
 
 interface Props {
     title: string;
     pageDescription: string;
     imageFullUrl?: string;
+    children?:ReactNode;
 }
 
-export const ShopLayout:FC<Props> = ({children, title, pageDescription, imageFullUrl}) => {
+export const ShopLayout = ({children, title, pageDescription, imageFullUrl}:Props) => {
   return (
     <>
         <Head>
-            <title>{title}</title>
+             <title>{title}</title>
             
             <meta name='description' content={pageDescription}/>
             <meta name='og:title' content={title}/>
@@ -25,17 +22,17 @@ export const ShopLayout:FC<Props> = ({children, title, pageDescription, imageFul
                 imageFullUrl && (
                     <meta name='og:image' content={ imageFullUrl }/>
                 )
-            }
+            } 
         </Head>
 
 
 
         <nav>
-            <Navbar/>
+           <Navbar/> 
         </nav>
 
 
-        <SideMenu/>
+         <SideMenu/> 
 
 
         <main style={{
@@ -43,8 +40,8 @@ export const ShopLayout:FC<Props> = ({children, title, pageDescription, imageFul
             maxWidth:'1440px',
             padding:'0px 30px'
         }}>
-            {children}
-        </main>
+             {children} 
+        </main> 
 
 
 

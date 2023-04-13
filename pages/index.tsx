@@ -6,9 +6,6 @@ import { ProductList } from '../components/products'
 import { ShopLayout } from '../components/layaouts'
 
 
-
-
-
 const Home: NextPage =  () => {
     return(
         <ShopLayout title='E-commerce' pageDescription={'FIND THE  BEST PRODUCTS EVER'}>
