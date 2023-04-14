@@ -1,13 +1,13 @@
-import mongoose,{ Schema, model, Model} from 'mongoose'
+import mongoose,{ Schema, model, Model, } from 'mongoose'
 import { IProduct } from '../interfaces';
 
 
 
-const productSchema = newSchema({
+const productSchema = new Schema({
     description: {type: String, required: true},
-    images:[{type:String}]
+    images:[{type:String}],
     inStock: { type: Number, required:true, default:0},
-    price: { type: Number, required:true, default:0 }
+    price: { type: Number, required:true, default:0 },
     sizes:[{
         type: String,
         enum:{
@@ -28,16 +28,17 @@ const productSchema = newSchema({
     gender:{
         type: String,
         enum:{
-            values:['men','women','kids', 'unisex'],
+            values:['men','women','kid', 'unisex'],
             message: '{VALUE} Not a valid gender'
         }
     },
 },{
-    timeStamps:true
+    timestamps:true
 });
 
 // TODO: CREAR INDICE
+productSchema.index({title: 'text', tags:'text'})
 
-const Product: Model<IProduct> = mongoose.models.Product || model('Product', productSchema)
+const Product: Model<IProduct> = mongoose.models.Product || model('Product', productSchema);
 
 export default Product
