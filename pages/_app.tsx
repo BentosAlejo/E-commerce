@@ -1,12 +1,24 @@
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from '@mui/material'
 import { lightTheme } from '../themes'
+import {SWRConfig} from 'swr'
+import { UiProvider } from '../components/context'
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
-        <ThemeProvider theme={ lightTheme}>
-            <Component {...pageProps}/>
-        </ThemeProvider>
+        <SWRConfig
+            value={{
+                fetcher:(resource,  init)=> fetch(resource, init).then(res => res.json())
+            }}
+        >
+            <UiProvider>
+
+                <ThemeProvider theme={ lightTheme}>
+                    <Component {...pageProps}/>
+                </ThemeProvider>
+            </UiProvider>
+
+        </SWRConfig>
     )
 }
 

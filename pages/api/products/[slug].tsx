@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiHandler, NextApiResponse } from "next";
 import { IProduct } from "../../../interfaces";
 import { db } from "../../../database";
 import { Product } from "../../../models";
-import { IProduct } from "../../../interfaces";
+
 
 type Data = 
     |{message:string}
