@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app'
 import { ThemeProvider } from '@mui/material'
 import { lightTheme } from '../themes'
 import {SWRConfig} from 'swr'
-import { UiProvider } from '../components/context'
+import { CartProvider, UiProvider } from '../components/context'
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
@@ -11,12 +11,15 @@ function MyApp({ Component, pageProps }: AppProps) {
                 fetcher:(resource,  init)=> fetch(resource, init).then(res => res.json())
             }}
         >
-            <UiProvider>
+            <CartProvider>
 
-                <ThemeProvider theme={ lightTheme}>
-                    <Component {...pageProps}/>
-                </ThemeProvider>
-            </UiProvider>
+                <UiProvider>
+
+                    <ThemeProvider theme={ lightTheme}>
+                        <Component {...pageProps}/>
+                    </ThemeProvider>
+                </UiProvider>
+            </CartProvider>
 
         </SWRConfig>
     )

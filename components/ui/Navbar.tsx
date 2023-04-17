@@ -18,14 +18,11 @@ export const Navbar = () => {
     const onSearchTerm =()=>{
         if( searchTerm.trim().length === 0) return 
         
-        //  navigateTo(`/search/${ searchTerm }`)
+        
          router.push(`/search/${ searchTerm }`)
     }
     
-    // const navigateTo = (url:string) =>{
-    //     toggleSideMenu()
-    //     router.push(url)
-    // }
+   
 
 
   return (
@@ -69,9 +66,6 @@ export const Navbar = () => {
 
               <Box flex={ 1 }/> 
 
-
-
-
             {
                 isSearchVisible
                 ? (
@@ -107,18 +101,6 @@ export const Navbar = () => {
             }
 
               
-
-
-
-
-
-
-
-
-
-
-
-
               <IconButton
                 sx={{display:{xs:'flex', sm:'none'}}}
                 onClick={toggleSideMenu}
